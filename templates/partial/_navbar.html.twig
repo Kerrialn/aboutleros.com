@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 py-2">
+            <a class="navbar-brand" href="{{ path('landing') }}">
+                <span class="cinzel-decorative-bold fs-3 text-black">About Leros</span>
+            </a>
+        </div>
+        <ul class="nav border-top mb-3">
+            <li class="nav-item">
+                <a class="nav-link {{ app.request.attributes.get('_route') == 'landing' ? 'text-black' : '' }}" href="{{ path('landing') }}">{{ 'news'|trans|title }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ app.request.attributes.get('_route') == 'events' ? 'text-black' : '' }}" aria-current="page" href="{{ path('events') }}">{{ 'events'|trans()|title }}</a>
+            </li>
+            <li class="nav-item ms-auto">
+                <a class="nav-link {{ app.request.attributes.get('_route') == 'contact' ? 'text-black' : '' }}" aria-current="page" href="{{ path('contact') }}">{{ 'contact'|trans()|title }}</a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>

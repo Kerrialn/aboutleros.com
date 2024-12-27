@@ -1,0 +1,49 @@
+// Zephyr 5.2.2
+// Bootswatch
+
+$theme: "zephyr" !default;
+
+//
+// Color system
+//
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$blue: #1269C7 !default;
+$indigo: #86148c !default;
+$purple: #8c1456 !default;
+$pink: #d63384 !default;
+$red: #C71612 !default;
+$orange: #f8765f !default;
+$yellow: #f4bd61 !default;
+$green: #2fb380 !default;
+$teal: #20c997 !default;
+$cyan: #287bb5 !default;
+
+$primary: $purple !default;
+$secondary: $red !default;
+$thirdly: $white !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-900 !default;
+
+$body-bg: $white !default;
+
+$border-color: $gray-200 !default;
+$card-border-color: rgba(0,0,0,0.07) !default;
+
+$border-radius: 0;
+$card-border-radius: 0;
