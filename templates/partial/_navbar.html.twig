@@ -7,7 +7,10 @@
         </div>
         <ul class="nav border-top mb-3">
             <li class="nav-item">
-                <a class="nav-link {{ app.request.attributes.get('_route') == 'landing' ? 'text-black' : '' }}" href="{{ path('landing') }}">{{ 'news'|trans|title }}</a>
+                <a class="nav-link {{ app.request.attributes.get('_route') == 'landing' ? 'text-black' : '' }}" href="{{ path('landing') }}">{{ 'places'|trans|title }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ app.request.attributes.get('_route') == 'news' ? 'text-black' : '' }}" href="{{ path('news') }}">{{ 'news'|trans|title }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ app.request.attributes.get('_route') == 'events' ? 'text-black' : '' }}" aria-current="page" href="{{ path('events') }}">{{ 'events'|trans()|title }}</a>

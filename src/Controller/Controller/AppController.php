@@ -2,21 +2,27 @@
 
 namespace App\Controller\Controller;
 
+use App\Entity\Artefact;
+use App\Model\Category;
+use App\Repository\ArtefactRepository;
 use App\Repository\ItemRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Uid\Uuid;
 
 class AppController extends AbstractController
 {
 
     public function __construct(
-        private readonly ItemRepository $itemRepository
+        private readonly ItemRepository $itemRepository,
     )
     {
     }
 
-    #[Route('/news', name: 'landing')]
+    #[Route('/news', name: 'news')]
     public function news(): Response
     {
         $items = $this->itemRepository->getNewsItems();
