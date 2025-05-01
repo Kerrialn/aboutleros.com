@@ -1,8 +1,6 @@
 <?php
 
-use App\Enum\ContentTypeEnum;
-
-return array(
+return [
     'language' => '__language',
     'region-country' => '__region-country',
     'currency' => '__currency',
@@ -44,4 +42,4 @@ return array(
     'category.travel-transport' => 'travel & transport',
     'category.accommodation' => 'accommodation',
     'category.information' => 'information',
-);
+];

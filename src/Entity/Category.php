@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Enum\ContentTypeEnum;
 use App\Repository\CategoryRepository;
-use Carbon\CarbonImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -15,6 +14,8 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
+    public $categories;
+
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\Column(type: 'uuid', unique: true)]
@@ -49,12 +50,12 @@ class Category
     private ContentTypeEnum $contentTypeEnum;
 
     public function __construct(
-        ?string          $title,
-        ?string          $description,
-        ?string          $slug,
-        ?string          $icon,
-        ?string          $image,
-        ?string          $color,
+        ?string $title,
+        ?string $description,
+        ?string $slug,
+        ?string $icon,
+        ?string $image,
+        ?string $color,
         ?ContentTypeEnum $contentTypeEnum,
         ?int $displayOrder
     )
@@ -69,7 +70,6 @@ class Category
         $this->displayOrder = $displayOrder;
         $this->businesses = new ArrayCollection();
     }
-
 
     public function getId(): null|Uuid
     {
@@ -122,7 +122,7 @@ class Category
 
     public function addBusiness(Business $business): void
     {
-        if (!$this->businesses->contains($business)) {
+        if (! $this->businesses->contains($business)) {
             $this->businesses->add($business);
         }
     }
@@ -188,5 +188,4 @@ class Category
     {
         $this->displayOrder = $displayOrder;
     }
-
 }

@@ -17,7 +17,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class FeedbackFormType extends AbstractType
 {
-
     public function __construct(
         private readonly TranslatorInterface $translator
     )
@@ -55,7 +54,7 @@ class FeedbackFormType extends AbstractType
                 'attr' => [
                     'placeholder' => $this->translator->trans('accommodation'),
                 ],
-                'autocomplete' => true
+                'autocomplete' => true,
             ])
             ->add('travelMotivation', EnumType::class, [
                 'class' => TravelMotivationEnum::class,
@@ -67,7 +66,7 @@ class FeedbackFormType extends AbstractType
                 'attr' => [
                     'placeholder' => $this->translator->trans('travel-motivation'),
                 ],
-                'autocomplete' => true
+                'autocomplete' => true,
             ])
             ->add('satisfactionRating', RangeType::class, [
                 'label' => false,
@@ -109,7 +108,6 @@ class FeedbackFormType extends AbstractType
                 ],
             ])
         ;
-
 
     }
 

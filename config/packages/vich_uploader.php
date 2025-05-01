@@ -13,13 +13,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'historical_event_images' => [
                 'uri_prefix' => '/uploads/historical_event_images',
                 'upload_destination' => '%kernel.project_dir%/public/uploads/historical_event_images',
-                'namer' => SmartUniqueNamer::class
+                'namer' => SmartUniqueNamer::class,
             ],
             'business_images' => [
                 'uri_prefix' => '/uploads/business_images',
                 'upload_destination' => '%kernel.project_dir%/public/uploads/business_images',
-                'namer' => OrignameNamer::class
-            ]
-        ]
+                'namer' => OrignameNamer::class,
+            ],
+        ],
     ]);
 };

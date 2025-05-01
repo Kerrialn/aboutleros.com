@@ -21,7 +21,7 @@ class EventCrudController extends AbstractCrudController
             TextField::new('title'),
             TextareaField::new('description'),
             DateTimeField::new('startAt'),
-            DateTimeField::new('endAt')
+            DateTimeField::new('endAt'),
         ];
     }
 }

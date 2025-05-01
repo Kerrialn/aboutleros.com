@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Article;
 use App\Entity\Business;
 use App\Entity\Category;
 use App\Entity\Event;

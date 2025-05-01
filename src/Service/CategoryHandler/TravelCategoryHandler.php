@@ -2,8 +2,8 @@
 
 namespace App\Service\CategoryHandler;
 
-use App\DataTransferObject\TravelScheduleDto;
 use App\DataTransferObject\ItemDto;
+use App\DataTransferObject\TravelScheduleDto;
 use App\Entity\Category;
 use App\Enum\ContentTypeEnum;
 use App\Repository\EventRepository;
@@ -13,31 +13,39 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[AutoconfigureTag('app.category_handler')]
-final class TravelCategoryHandler implements CategoryHandlerInterface
+final readonly class TravelCategoryHandler implements CategoryHandlerInterface
 {
+    /**
+     * @param EventRepository $eventRepository
+     * @param UrlGeneratorInterface $urlGenerator
+     * @param array<mixed>  $flightSchedule
+     * @param array<mixed> $ferrySchedule
+     */
     public function __construct(
-        private EventRepository       $eventRepository,
+        private EventRepository $eventRepository,
         private UrlGeneratorInterface $urlGenerator,
         #[Autowire('%app.data.flight_schedule%')]
-        private array                 $flightSchedule,
+        private array $flightSchedule,
         #[Autowire('%app.data.ferry_schedule%')]
-        private array                 $ferrySchedule,
+        private array $ferrySchedule,
     )
     {
     }
 
     public function supports(Category $category): bool
     {
-        return $category->getContentTypeEnum() === ContentTypeEnum::TRAVEL;
+        return $category->getContentTypeEnum() === ContentTypeEnum::TRAVEL_AND_TRANSPORT;
     }
 
     public function fetchItems(Category $category): array
     {
         return array_map(
-            fn($event) => new ItemDto(
+            fn($event): \App\DataTransferObject\ItemDto => new ItemDto(
                 title: $event->getTitle(),
                 image: null,
-                route: $this->urlGenerator->generate('show_event', ['id' => $event->getId()])
+                route: $this->urlGenerator->generate('show_event', [
+                    'id' => $event->getId(),
+                ])
             ),
             $this->eventRepository->findStartingSoon()
         );
@@ -58,19 +66,19 @@ final class TravelCategoryHandler implements CategoryHandlerInterface
         // departures: origin = Leros
         $flightDepartures = array_filter(
             $allFlights,
-            fn(TravelScheduleDto $f) => $f->getOrigin() === 'Leros'
+            fn(TravelScheduleDto $f): bool => $f->getOrigin() === 'Leros'
         );
 
         // arrivals: destination = Leros
         $flightArrivals = array_filter(
             $allFlights,
-            fn(TravelScheduleDto $f) => $f->getDestination() === 'Leros'
+            fn(TravelScheduleDto $f): bool => $f->getDestination() === 'Leros'
         );
 
         // same for ferries...
         $allFerries = $this->getFerrySchedule();
-        $ferryDepartures = array_filter($allFerries, fn($f) => $f->getOrigin() === 'Leros');
-        $ferryArrivals = array_filter($allFerries, fn($f) => $f->getDestination() === 'Leros');
+        $ferryDepartures = array_filter($allFerries, fn($f): bool => $f->getOrigin() === 'Leros');
+        $ferryArrivals = array_filter($allFerries, fn($f): bool => $f->getDestination() === 'Leros');
 
         return [
             'category' => $category,
@@ -86,7 +94,9 @@ final class TravelCategoryHandler implements CategoryHandlerInterface
         ];
     }
 
-    /** @return TravelScheduleDto[] */
+    /**
+     * @return array<int, TravelScheduleDto>
+     */
     private function getFlightSchedule(): array
     {
         $out = [];
@@ -122,7 +132,9 @@ final class TravelCategoryHandler implements CategoryHandlerInterface
         return $out;
     }
 
-    /** @return TravelScheduleDto[] */
+    /**
+     * @return array<int, TravelScheduleDto>
+     */
     private function getFerrySchedule(): array
     {
         $out = [];
@@ -147,5 +159,4 @@ final class TravelCategoryHandler implements CategoryHandlerInterface
 
         return $out;
     }
-
 }

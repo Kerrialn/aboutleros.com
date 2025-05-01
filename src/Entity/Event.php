@@ -17,16 +17,21 @@ class Event implements CategorizableInterface
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\Column(type: 'uuid', unique: true)]
     #[ORM\CustomIdGenerator(UuidGenerator::class)]
-    private Uuid|null $id = null;
+    private Uuid $id;
+
     #[ORM\Column(length: 255)]
     private string $title;
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private null|string $description;
+
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private null|CarbonImmutable $startAt;
+
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
     private null|CarbonImmutable $endAt;
-    public function getId(): ?Uuid
+
+    public function getId(): Uuid
     {
         return $this->id;
     }
@@ -58,7 +63,7 @@ class Event implements CategorizableInterface
 
     public function setStartAt(\DateTimeInterface $startAt): self
     {
-        $this->startAt = CarbonImmutable::instance($startAt);
+        $this->startAt = CarbonImmutable::parse($startAt);
 
         return $this;
     }
@@ -74,5 +79,4 @@ class Event implements CategorizableInterface
 
         return $this;
     }
-
 }

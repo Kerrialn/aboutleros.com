@@ -8,11 +8,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Business>
- *
- * @method Business|null find($id, $lockMode = null, $lockVersion = null)
- * @method Business|null findOneBy(array $criteria, array $orderBy = null)
- * @method Business[]    findAll()
- * @method Business[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class BusinessRepository extends ServiceEntityRepository
 {
@@ -20,5 +15,4 @@ class BusinessRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Business::class);
     }
-
 }

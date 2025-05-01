@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 final class ShopCategoryHandler implements CategoryHandlerInterface
 {
     public function __construct(
-        private BusinessRepository    $businessRepository,
+        private BusinessRepository $businessRepository,
         private UrlGeneratorInterface $urlGenerator,
     )
     {
@@ -22,7 +22,7 @@ final class ShopCategoryHandler implements CategoryHandlerInterface
 
     public function supports(Category $category): bool
     {
-        return $category->getContentTypeEnum() === ContentTypeEnum::SHOPS;
+        return $category->getContentTypeEnum() === ContentTypeEnum::SHOPPING_AND_SUPPLIES;
     }
 
     public function fetchItems(Category $category): array
@@ -30,30 +30,32 @@ final class ShopCategoryHandler implements CategoryHandlerInterface
         $businesses = $this->businessRepository->findAll();
 
         return array_map(
-            fn($biz) => new ItemDto(
+            fn($biz): \App\DataTransferObject\ItemDto => new ItemDto(
                 $biz->getTitle(),
-                $biz->getMainImage(),
+                $biz->getMainImage()->getFilename(),
                 $this->urlGenerator->generate(
                     'show_business',
-                    ['slug' => $biz->getSlug()]
+                    [
+                        'slug' => $biz->getSlug(),
+                    ]
                 )
             ),
             $businesses
         );
     }
 
-    public function getTemplate() : string
+    public function getTemplate(): string
     {
         return 'discover/shops.html.twig';
     }
 
     public function getTemplateParameters(Category $category): array
     {
-        $items   = $this->fetchItems($category);
+        $items = $this->fetchItems($category);
 
         return [
             'category' => $category,
-            'items'    => $items,
+            'items' => $items,
         ];
     }
 }

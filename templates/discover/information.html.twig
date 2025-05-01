@@ -7,71 +7,8 @@
 
         <div class="row justify-content-center my-3">
             <div class="col-md-10">
-                <h1>{{ category.title }}</h1>
+                <h1>{{ category.title|trans|title }}</h1>
 
-                <div>Departures</div>
-                <table class="table table-striped mb-5">
-                    <thead>
-                    <tr>
-                        <th>Destination</th>
-                        <th>Day</th>
-                        <th>Departs</th>
-                        <th>Arrives</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for flight in departures %}
-                        <tr>
-                            <td>{{ flight.destination }}</td>
-                            <td>{{ flight.day }}</td>
-                            <td>{{ flight.departure }}</td>
-                            <td>{{ flight.arrival }}</td>
-                        </tr>
-                    {% else %}
-                        <tr><td colspan="4">No departures scheduled.</td></tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-
-                <div>Arrivals</div>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Destination</th>
-                        <th>Day</th>
-                        <th>Departs</th>
-                        <th>Arrives</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for flight in arrivals %}
-                        <tr>
-                            <td>{{ flight.origin }}</td>
-                            <td>{{ flight.day }}</td>
-                            <td>{{ flight.departure }}</td>
-                            <td>{{ flight.arrival }}</td>
-                        </tr>
-                    {% else %}
-                        <tr><td colspan="4">No arrivals scheduled.</td></tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-
-                <div class="row g-4">
-                    {% for item in items %}
-                        <div class="col-12 col-md-6">
-                            <div class="card">
-                                <img src="{{ item.image }}" class="card-img-top" style="height:200px;object-fit:cover">
-                                <div class="card-body">
-                                    <h4>{{ item.title }}</h4>
-                                    <a href="{{ path(item.route._route, item.route._route_params) }}" class="btn btn-primary">View</a>
-                                </div>
-                            </div>
-                        </div>
-                    {% else %}
-                        <p>No {{ category.title|lower }} found.</p>
-                    {% endfor %}
-                </div>
             </div>
         </div>
     </div>

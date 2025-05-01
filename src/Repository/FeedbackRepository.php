@@ -3,18 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Feedback;
-use Carbon\CarbonImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Collections\Order;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Feedback>
- *
- * @method Feedback|null find($id, $lockMode = null, $lockVersion = null)
- * @method Feedback|null findOneBy(array $criteria, array $orderBy = null)
- * @method Feedback[]    findAll()
- * @method Feedback[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class FeedbackRepository extends ServiceEntityRepository
 {
@@ -40,5 +33,4 @@ class FeedbackRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
 }

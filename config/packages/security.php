@@ -33,7 +33,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 'form_login' => [
                     'login_path' => 'app_login',
                     'check_path' => 'app_login',
-                    'enable_csrf' => true
+                    'enable_csrf' => true,
                 ],
                 'logout' => [
                     'path' => 'app_logout',

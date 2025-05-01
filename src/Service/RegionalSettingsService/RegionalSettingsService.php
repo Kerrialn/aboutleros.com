@@ -48,7 +48,7 @@ final class RegionalSettingsService
         $this->currency = $currency;
     }
 
-    public function getRegion(): ?string
+    public function getRegion(): string
     {
         return $this->region;
     }
@@ -68,12 +68,12 @@ final class RegionalSettingsService
         $this->timezone = $timezone;
     }
 
-    public function getMultiplier(): float|int
+    public function getMultiplier(): float
     {
         return $this->multiplier;
     }
 
-    public function setMultiplier(float|int $multiplier): void
+    public function setMultiplier(float $multiplier): void
     {
         $this->multiplier = $multiplier;
     }

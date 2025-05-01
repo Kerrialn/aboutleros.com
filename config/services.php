@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Controller\Controller\DiscoverController;
-use App\Service\CategoryHandler\Contract\CategoryHandlerInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\tagged_iterator;
 

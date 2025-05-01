@@ -50,5 +50,4 @@ readonly final class TravelScheduleDto
     {
         return $this->spcificDestination;
     }
-
 }

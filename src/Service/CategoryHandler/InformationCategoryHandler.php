@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[AutoconfigureTag('app.category_handler')]
-final class BusinessCategoryHandler implements CategoryHandlerInterface
+final class InformationCategoryHandler implements CategoryHandlerInterface
 {
     public function __construct(
         private BusinessRepository $businessRepository,
@@ -22,10 +22,7 @@ final class BusinessCategoryHandler implements CategoryHandlerInterface
 
     public function supports(Category $category): bool
     {
-        return in_array($category->getContentTypeEnum(), [
-            ContentTypeEnum::CUISINE_AND_NIGHTLIFE,
-            ContentTypeEnum::MARINE_AND_YACHTING,
-        ]);
+        return $category->getContentTypeEnum() == ContentTypeEnum::INFORMATION;
     }
 
     public function fetchItems(Category $category): array
@@ -49,7 +46,7 @@ final class BusinessCategoryHandler implements CategoryHandlerInterface
 
     public function getTemplate(): string
     {
-        return 'discover/businesses.html.twig';
+        return 'discover/information.html.twig';
     }
 
     public function getTemplateParameters(Category $category): array

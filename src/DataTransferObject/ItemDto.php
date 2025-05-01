@@ -4,7 +4,6 @@ namespace App\DataTransferObject;
 
 readonly final class ItemDto
 {
-
     public function __construct(
         private string $title,
         private null|string $image,
@@ -27,5 +26,4 @@ readonly final class ItemDto
     {
         return $this->route;
     }
-
 }

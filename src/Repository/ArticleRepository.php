@@ -11,11 +11,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Article>
- *
- * @method Article|null find($id, $lockMode = null, $lockVersion = null)
- * @method Article|null findOneBy(array $criteria, array $orderBy = null)
- * @method Article[]    findAll()
- * @method Article[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ArticleRepository extends ServiceEntityRepository
 {
@@ -27,7 +22,7 @@ class ArticleRepository extends ServiceEntityRepository
     /**
      * @return array<int, Article>
      */
-    public function getNewsItems() : array
+    public function getNewsItems(): array
     {
         $qb = $this->createQueryBuilder('article');
         $qb->orderBy('article.createdAt', Order::Descending->value);
@@ -35,11 +30,10 @@ class ArticleRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
-
     /**
      * @return array<int, Article>
      */
-    public function getEvents() : array
+    public function getEvents(): array
     {
         $qb = $this->createQueryBuilder('item');
 
@@ -55,5 +49,4 @@ class ArticleRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
-
 }

@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HistoryController extends AbstractController
 {
-
     public function __construct(
         private readonly HistoricalEventRepository $historicalEventRepository
     )
@@ -17,12 +16,11 @@ class HistoryController extends AbstractController
     }
 
     #[Route(path: '/history', name: 'history')]
-    public function index() : Response
+    public function index(): Response
     {
         $historicalEvents = $this->historicalEventRepository->findAllByDate();
        return $this->render('history/index.html.twig', [
-           'historicalEvents' => $historicalEvents
+           'historicalEvents' => $historicalEvents,
        ]);
     }
-
 }

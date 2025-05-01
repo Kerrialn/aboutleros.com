@@ -2,25 +2,23 @@
 
 namespace App\Entity;
 
-use App\Controller\Admin\HistoricalEventImageCrudController;
 use App\Repository\HistoricalEventRepository;
 use Carbon\CarbonImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Uid\Uuid;
-use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: HistoricalEventRepository::class)]
-
 class HistoricalEvent
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\Column(type: 'uuid', unique: true)]
     #[ORM\CustomIdGenerator(UuidGenerator::class)]
-    private Uuid|null $id = null;
+    private Uuid $id;
 
     #[ORM\Column(length: 255)]
     private null|string $title;
@@ -30,6 +28,7 @@ class HistoricalEvent
 
     #[ORM\Column(length: 255)]
     private null|string $location;
+
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private null|CarbonImmutable $startAt;
 
@@ -47,8 +46,7 @@ class HistoricalEvent
         $this->images = new ArrayCollection();
     }
 
-
-    public function getId(): ?Uuid
+    public function getId(): Uuid
     {
         return $this->id;
     }
@@ -83,16 +81,6 @@ class HistoricalEvent
         $this->location = $location;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): void
-    {
-        $this->image = $image;
-    }
-
     public function getStartAt(): ?CarbonImmutable
     {
         return $this->startAt;
@@ -125,23 +113,23 @@ class HistoricalEvent
 
     public function removeImage(HistoricalEventImage $image): self
     {
-        if ($this->images->removeElement($image)) {
-            if ($image->getHistoricalEvent() === $this) {
-                $image->setHistoricalEvent(null);
-            }
+        if ($image->getHistoricalEvent() === $this) {
+            $this->images->removeElement($image);
         }
 
         return $this;
     }
 
+    /**
+     * @return Collection<int, HistoricalEventImage>
+     */
     public function getImages(): Collection
     {
         return $this->images;
     }
 
-    public function getMainImage() : null|HistoricalEventImage
+    public function getMainImage(): null|HistoricalEventImage
     {
-        return $this->images->findFirst(fn(int $key, HistoricalEventImage $historicalEventImage) => $historicalEventImage->getPosition() === 0);
+        return $this->images->findFirst(fn(int $key, HistoricalEventImage $historicalEventImage): bool => $historicalEventImage->getPosition() === 0);
     }
-
 }

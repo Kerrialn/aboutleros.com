@@ -23,8 +23,7 @@ class FeedbackController extends AbstractController
         }
 
         return $this->render('feedback/index.html.twig', [
-            'feedbackForm' => $feedbackform
+            'feedbackForm' => $feedbackform,
         ]);
     }
-
 }

@@ -2,12 +2,11 @@
 
 namespace App\Service\CategoryHandler;
 
+use App\DataTransferObject\ItemDto;
 use App\Entity\Category;
 use App\Enum\ContentTypeEnum;
 use App\Repository\EventRepository;
 use App\Service\CategoryHandler\Contract\CategoryHandlerInterface;
-use Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
-use App\DataTransferObject\ItemDto;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -15,7 +14,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 final class EventCategoryHandler implements CategoryHandlerInterface
 {
     public function __construct(
-        private EventRepository       $eventRepository,
+        private EventRepository $eventRepository,
         private UrlGeneratorInterface $urlGenerator,
     )
     {
@@ -29,12 +28,14 @@ final class EventCategoryHandler implements CategoryHandlerInterface
     public function fetchItems(Category $category): array
     {
         return array_map(
-            fn($event) => new ItemDto(
+            fn($event): \App\DataTransferObject\ItemDto => new ItemDto(
                 title: $event->getTitle(),
                 image: null,
                 route: $this->urlGenerator->generate(
                     'show_event',
-                    ['id' => $event->getId()]
+                    [
+                        'id' => $event->getId(),
+                    ]
                 )
             ),
             $this->eventRepository->findStartingSoon()

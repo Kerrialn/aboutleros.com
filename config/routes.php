@@ -16,7 +16,7 @@ return static function (RoutingConfigurator $routingConfigurator): void {
             'keepRequestMethod' => true,
         ]);
 
-    $routingConfigurator->import(resource: __DIR__.'/../src/Controller/Controller/', type: 'attribute')
+    $routingConfigurator->import(resource: __DIR__ . '/../src/Controller/Controller/', type: 'attribute')
         ->prefix('/{_locale}')
         ->defaults([
             '_locale' => 'en',
@@ -26,7 +26,7 @@ return static function (RoutingConfigurator $routingConfigurator): void {
         ]);
 
     $routingConfigurator->import([
-        'path' => __DIR__.'/../src/Controller/Admin',
+        'path' => __DIR__ . '/../src/Controller/Admin',
         'namespace' => 'App\Controller\Admin',
     ], 'attribute');
 };

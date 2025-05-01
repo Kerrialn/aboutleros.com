@@ -13,7 +13,6 @@ enum TypeEnum: string
     case CULTURAL = 'cultural';
     case RELIGIOUS = 'religious';
     case COOPERATIVE = 'cooperative';
-    case SOCIAL_ENTERPRISE = 'social_enterprise';
     case OTHER = 'other';
 
     public function label(): string
@@ -27,12 +26,16 @@ enum TypeEnum: string
             self::CULTURAL => 'Cultural',
             self::RELIGIOUS => 'Religious',
             self::OTHER => 'Other',
+            self::NON_PROFIT => 'non-profit',
+            self::COOPERATIVE => 'cooperative',
         };
     }
 
+    /**
+     * @return array<string>
+     */
     public static function values(): array
     {
         return array_column(self::cases(), 'value');
     }
-
 }

@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\Contract\CategorizableInterface;
-use App\Enum\TypeEnum;
 use App\Enum\ItemStatusEnum;
+use App\Enum\TypeEnum;
 use App\Repository\BusinessRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -92,7 +92,7 @@ class Business implements CategorizableInterface
 
     public function addImage(BusinessImage $image): self
     {
-        if (!$this->images->contains($image)) {
+        if (! $this->images->contains($image)) {
             $this->images->add($image);
             $image->setBusiness($this);
         }
@@ -102,10 +102,8 @@ class Business implements CategorizableInterface
 
     public function removeImage(BusinessImage $image): self
     {
-        if ($this->images->removeElement($image)) {
-            if ($image->getBusiness() === $this) {
-                $image->setBusiness(null);
-            }
+        if ($this->images->removeElement($image) && $image->getBusiness() === $this) {
+            $image->setBusiness(null);
         }
 
         return $this;
@@ -119,8 +117,8 @@ class Business implements CategorizableInterface
         return $this->images;
     }
 
-    public function getMainImage() : BusinessImage
+    public function getMainImage(): BusinessImage
     {
-        return $this->images->findFirst(fn(int $key, BusinessImage $businessImage) => $businessImage->getPosition() === 0);
+        return $this->images->findFirst(fn(int $key, BusinessImage $businessImage): bool => $businessImage->getPosition() === 0);
     }
 }

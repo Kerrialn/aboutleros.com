@@ -226,7 +226,7 @@
   height: 100%;
   object-fit: cover;
   background-position: center center;
-  @include repeating-mask('../../public/images/pattern-10.png', 100px 100px);
+  @include repeating-mask('../../public/images/pattern/greek-pattern-blue.png', 100px 100px);
 }
 
 
@@ -257,6 +257,7 @@
 
 .category-card:hover .category-title {
   color: $secondary !important;
+  transition: all 0.3s ease-in-out;
 }
 
 .category-card {

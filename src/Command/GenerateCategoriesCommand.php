@@ -18,7 +18,9 @@ use Symfony\Component\String\Slugger\AsciiSlugger;
 )]
 class GenerateCategoriesCommand extends Command
 {
-    public function __construct(private EntityManagerInterface $em)
+    public function __construct(
+        private EntityManagerInterface $em
+    )
     {
         parent::__construct();
     }
@@ -34,7 +36,9 @@ class GenerateCategoriesCommand extends Command
             $slug = $def['slug'];
 
             // Skip if already exists
-            if ($repo->findOneBy(['slug' => $slug])) {
+            if ($repo->findOneBy([
+                'slug' => $slug,
+            ])) {
                 $io->note("Category '{$value}' (slug='{$slug}') already exists, skipping.");
                 continue;
             }
@@ -101,5 +105,4 @@ class GenerateCategoriesCommand extends Command
 
         return $categories;
     }
-
 }

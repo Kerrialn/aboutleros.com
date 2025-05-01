@@ -15,6 +15,16 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
 {
+    public $content;
+
+    public $itemTypeEnum;
+
+    public $itemStatusEnum;
+
+    public $imagePath;
+
+    public $durationInMinutes;
+
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\Column(type: 'uuid', unique: true)]
@@ -123,5 +133,4 @@ class Article
     {
         $this->durationInMinutes = $durationInMinutes;
     }
-
 }

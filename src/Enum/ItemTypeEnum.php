@@ -2,7 +2,7 @@
 
 namespace App\Enum;
 
-enum ItemTypeEnum : int
+enum ItemTypeEnum: int
 {
     case EVENT = 1;
     case NEWS = 2;

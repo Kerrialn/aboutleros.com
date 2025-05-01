@@ -11,10 +11,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         'http_client' => [
             'scoped_clients' => [
                 'datamuse.client' => [
-                    'base_uri' => 'https://api.datamuse.com/'
-                ]
-            ]
-        ]
+                    'base_uri' => 'https://api.datamuse.com/',
+                ],
+            ],
+        ],
     ]);
     if ($containerConfigurator->env() === 'test') {
         $containerConfigurator->extension('framework', [

@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use App\Enum\AccommodationTypeEnum;
 use App\Enum\TravelMotivationEnum;
-use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
+use App\Repository\FeedbackRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: FeedbackRepository::class)]
@@ -15,7 +16,7 @@ class Feedback
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\Column(type: 'uuid', unique: true)]
     #[ORM\CustomIdGenerator(UuidGenerator::class)]
-    private Uuid|null $id = null;
+    private Uuid $id;
 
     #[ORM\Column(length: 255)]
     private null|string $name;
@@ -41,7 +42,7 @@ class Feedback
     #[ORM\Column(length: 500)]
     private null|string $improvementSuggestions;
 
-    public function getId(): ?Uuid
+    public function getId(): Uuid
     {
         return $this->id;
     }
@@ -116,7 +117,6 @@ class Feedback
         $this->likelihoodToReturn = $likelihoodToReturn;
     }
 
-
     public function getImprovementSuggestions(): ?string
     {
         return $this->improvementSuggestions;
@@ -126,7 +126,4 @@ class Feedback
     {
         $this->improvementSuggestions = $improvementSuggestions;
     }
-
-
-
 }

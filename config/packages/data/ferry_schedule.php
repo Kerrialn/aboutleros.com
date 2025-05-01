@@ -2,7 +2,7 @@
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
-return static function (ContainerConfigurator $c) {
+return static function (ContainerConfigurator $c): void {
     $c->parameters()
         ->set('app.data.ferry_schedule', [
 
@@ -115,7 +115,6 @@ return static function (ContainerConfigurator $c) {
                 'days' => ['tue', 'thu'],
                 'operator' => 'Dodekanisos Seaways',
             ],  // 2 sailings weekly :contentReference[oaicite:9]{index=9}
-
 
             // ─── ARRIVALS INTO LEROS ─────────────────────────────────────────
 
