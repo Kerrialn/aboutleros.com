@@ -2,7 +2,11 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Item;
+use App\Entity\Article;
+use App\Entity\Business;
+use App\Entity\Category;
+use App\Entity\Event;
+use App\Entity\HistoricalEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -16,7 +20,7 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
          $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-         return $this->redirect($adminUrlGenerator->setController(ItemCrudController::class)->generateUrl());
+         return $this->redirect($adminUrlGenerator->setController(HistoricalEventCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -27,6 +31,9 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-         yield MenuItem::linkToCrud('Item', 'fas fa-list', Item::class);
+         yield MenuItem::linkToCrud('Category', 'fas fa-list', Category::class);
+         yield MenuItem::linkToCrud('Event', 'fas fa-list', Event::class);
+         yield MenuItem::linkToCrud('Business', 'fas fa-list', Business::class);
+         yield MenuItem::linkToCrud('Historical Event', 'fas fa-list', HistoricalEvent::class);
     }
 }

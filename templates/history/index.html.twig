@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About Leros{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center gap-1">
+            <div class="timeline-events col-12 col-md-8">
+                {% for historicalEvent in historicalEvents %}
+                    {# Parent element wrapping title and content #}
+                    <section class="position-relative py-5 mb-4">
+                        {# Sticky header inside the section #}
+                        <div class="position-sticky top-0 bg-white py-2 z-3">
+                            <h2 class="h2 retro-floral-bold m-0">
+                                {{ historicalEvent.startAt|format_date }} - {{ historicalEvent.title }}
+                            </h2>
+                        </div>
+
+                        {# Event description and images #}
+                        <div class="mt-3">
+                            <p>{{ historicalEvent.description|nl2br }}</p>
+                            <div class="row justify-content-center g-3">
+                                {% for image in historicalEvent.images %}
+                                    <img class="col-6 img-fluid"
+                                         src="{{ asset('uploads/historical_event_images/' ~ image.filename) }}"
+                                         alt="{{ image.caption|default('Historical Event Image') }}">
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

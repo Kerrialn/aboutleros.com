@@ -16,15 +16,37 @@
 
 {{ include('partial/_navbar.html.twig') }}
 
-{% block body %}{% endblock %}
+<div>
+    {% block body %}{% endblock %}
+</div>
 {% if not app.user %}
-    <div class="container-fluid mt-5">
-        <div class="row justify-content-center g-0">
-            <div class="col-12 col-md-12 text-center">
-                <a href="/" class="link-dark text-decoration-none">
-                    <span class="cinzel-decorative-bold">About Leros</span>
-                </a>
-                <p class="text-body-secondary text-center small text-muted">© {{ 'now'|date('Y') }}</p>
+    <div class="container-fluid py-5 border-top border-secondary"
+         style="
+                 border-width: 10px!important;
+                 background-image: url({{ asset('images/pattern/greek-pattern-blue.png') }});
+                 background-size: contain;
+                 background-repeat: repeat;"
+    >
+        <div class="row d-flex justify-content-center g-0">
+            <div class="col-12 col-md-4 bg-white text-center py-3">
+                <div>
+                    <a href="/" class="link-light text-decoration-none">
+                        <span class="manbow-fill fs-1 text-black">About Leros</span>
+                    </a>
+                    <p class=" text-center small text-black">© {{ 'now'|date('Y') }}</p>
+                </div>
+                <hr/>
+                <div class="d-flex justify-content-around">
+                    <a href="/" class="link-light text-decoration-none">
+                        <span class="text-black">{{ 'advertise'|trans|title }}</span>
+                    </a>
+                    <a href="/" class="link-light text-decoration-none">
+                        <span class="text-black">{{ 'privacy'|trans|title }}</span>
+                    </a>
+                    <a href="/" class="link-light text-decoration-none">
+                        <span class="text-black">{{ 'terms-of-use'|trans|title }}</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

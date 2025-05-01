@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About Leros{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center my-3">
+            <div class="col-12 col-md-6">
+                <div class="card mb-5">
+                    <div class="card-header bg-white">
+                        <div class="retro-floral-bold h3">{{ 'leros-visitor-survey'|trans }}</div>
+                        <hr/>
+                        <div>{{ 'feedback-explainer'|trans }}</div>
+                    </div>
+                    {{ form_start(feedbackForm) }}
+                    <div class="card-body vstack gap-3">
+                        {{ form_row(feedbackForm.name) }}
+                        {{ form_row(feedbackForm.durationOfStayInDays) }}
+                        {{ form_row(feedbackForm.accommodationTypeEnum) }}
+                        {{ form_row(feedbackForm.travelMotivation) }}
+                        <div class="p-3 border" {{ stimulus_controller('range') }}>
+                            <div class="d-flex mb-3 justify-content-between align-items-center">
+                                <div>{{ 'overall-satisfaction'|trans }}</div>
+                                <div class="bg-primary text-white px-2" {{ stimulus_target('range', 'value') }}></div>
+                            </div>
+                            {{ form_row(feedbackForm.satisfactionRating) }}
+                        </div>
+                        <div class="p-3 border" {{ stimulus_controller('range') }}>
+                            <div class="d-flex mb-3 justify-content-between align-items-center">
+                                <div>{{ 'likehood-of-recommending'|trans }}</div>
+                                <div class="bg-primary text-white px-2" {{ stimulus_target('range', 'value') }}></div>
+                            </div>
+                            {{ form_row(feedbackForm.likelihoodOfRecommending) }}
+                        </div>
+                        <div class="p-3 border" {{ stimulus_controller('range') }}>
+                            <div class="d-flex mb-3 justify-content-between align-items-center">
+                                <div>{{ 'likehood-to-return'|trans }}</div>
+                                <div class="bg-primary text-white px-2" {{ stimulus_target('range', 'value') }}></div>
+                            </div>
+                            {{ form_row(feedbackForm.likelihoodToReturn) }}
+                        </div>
+                        {{ form_row(feedbackForm.improvementSuggestions) }}
+                    </div>
+                    <div class="card-footer bg-white text-end">
+                        <button type="submit" class="btn btn-primary">{{ 'send-feedback'|trans|title }}</button>
+                    </div>
+                    {{ form_end(feedbackForm) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

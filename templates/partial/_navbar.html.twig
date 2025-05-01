@@ -1,24 +1,23 @@
 <div class="container">
     <div class="row">
-        <div class="col-12 py-2">
-            <a class="navbar-brand" href="{{ path('landing') }}">
-                <span class="cinzel-decorative-bold fs-3 text-black">About Leros</span>
+        <div class="col-12">
+            <a class="navbar-brand mb-0 pb-0" href="{{ path('discover') }}">
+                <span class="fs-1 mb-0 pb-0 manbow-bold">About Leros</span>
             </a>
         </div>
-        <ul class="nav border-top mb-3">
+        <ul class="nav mt-1">
             <li class="nav-item">
-                <a class="nav-link {{ app.request.attributes.get('_route') == 'landing' ? 'text-black' : '' }}" href="{{ path('landing') }}">{{ 'places'|trans|title }}</a>
+                <a class="nav-link {{ app.request.attributes.get('_route') == 'discover' ? 'text-black' : '' }}"
+                   href="{{ path('discover') }}">{{ 'discover'|trans|title }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ app.request.attributes.get('_route') == 'news' ? 'text-black' : '' }}" href="{{ path('news') }}">{{ 'news'|trans|title }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ app.request.attributes.get('_route') == 'events' ? 'text-black' : '' }}" aria-current="page" href="{{ path('events') }}">{{ 'events'|trans()|title }}</a>
+                <a class="nav-link {{ app.request.attributes.get('_route') == 'history' ? 'text-black' : '' }}"
+                   aria-current="page" href="{{ path('history') }}">{{ 'history'|trans()|title }}</a>
             </li>
             <li class="nav-item ms-auto">
-                <a class="nav-link {{ app.request.attributes.get('_route') == 'contact' ? 'text-black' : '' }}" aria-current="page" href="{{ path('contact') }}">{{ 'contact'|trans()|title }}</a>
+                <a class="nav-link {{ app.request.attributes.get('_route') == 'leros_visitor_survey' ? 'text-black' : '' }}"
+                   aria-current="page" href="{{ path('leros_visitor_survey') }}">{{ 'visitor-survey'|trans()|title }}</a>
             </li>
-
         </ul>
     </div>
 

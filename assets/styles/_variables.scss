@@ -30,8 +30,8 @@ $green: #2fb380 !default;
 $teal: #20c997 !default;
 $cyan: #287bb5 !default;
 
-$primary: $purple !default;
-$secondary: $red !default;
+$primary: #284277 !default;
+$secondary: #006bbd !default;
 $thirdly: $white !default;
 $success: $green !default;
 $info: $cyan !default;
@@ -42,6 +42,7 @@ $dark: $gray-900 !default;
 
 $body-bg: $white !default;
 
+$font-size-base: 1.25rem;
 $border-color: $gray-200 !default;
 $card-border-color: rgba(0,0,0,0.07) !default;
 

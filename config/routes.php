@@ -10,7 +10,7 @@ return static function (RoutingConfigurator $routingConfigurator): void {
     $routingConfigurator->add('index_redirect', '/')
         ->controller(RedirectController::class)
         ->defaults([
-            'route' => 'landing',
+            'route' => 'discover',
             'permanent' => true,
             'keepQueryParams' => true,
             'keepRequestMethod' => true,

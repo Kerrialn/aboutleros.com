@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About Leros{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center my-3">
+            <div class="col-md-10">
+                <div class="fs-1">BUSINESSS</div>
+
+                <div class="row g-4">
+                    {% for item in items %}
+                        <div class="col-12 col-md-6">
+                            <div class="card">
+                                <img src="{{ item.image }}" class="card-img-top" style="height:200px;object-fit:cover">
+                                <div class="card-body">
+                                    <h4>{{ item.title }}</h4>
+                                    <a href="{{ path(item.route._route, item.route._route_params) }}" class="btn btn-primary">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p>No {{ category.title|lower }} found.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

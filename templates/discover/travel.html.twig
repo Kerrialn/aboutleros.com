@@ -1,0 +1,209 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About Leros{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row justify-content-center my-3">
+            <div class="col-md-10" {{ stimulus_controller('search') }}>
+                <h1>{{ category.title|title }}</h1>
+
+                <div class="mb-3">
+                    <input
+                            type="text"
+                            class="form-control"
+                            placeholder="{{ 'search-tavel-schedule'|trans }}"
+                            {{ stimulus_target('search', 'query') }}
+                            {{ stimulus_action('search', 'filter', 'keyup') }}
+                    />
+                </div>
+
+                {# Nav pills for Flights / Ferries #}
+                <ul class="nav nav-underline nav-justified mb-3" id="travel-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button
+                                class="nav-link active"
+                                id="flights-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#flights"
+                                type="button"
+                                role="tab"
+                                aria-controls="flights"
+                                aria-selected="true"
+                        >Flights
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button
+                                class="nav-link"
+                                id="ferries-tab"
+                                data-bs-toggle="pill"
+                                data-bs-target="#ferries"
+                                type="button"
+                                role="tab"
+                                aria-controls="ferries"
+                                aria-selected="false"
+                        >Ferries
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="travel-tabsContent">
+                    {# Flights Tab Pane #}
+                    <div
+                            class="tab-pane fade show active"
+                            id="flights"
+                            role="tabpanel"
+                            aria-labelledby="flights-tab"
+                            tabindex="0"
+                    >
+                        <div class="text-center fw-bold">{{ 'departures'|trans|title }}</div>
+                        <table class="table table-striped mb-4">
+                            <thead class="sticky-top">
+                            <tr>
+                                <th>Destination</th>
+                                <th>Day</th>
+                                <th>Departs</th>
+                                <th>Arrives</th>
+                                <th>Operator</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for flight in flights.departures %}
+                                <tr {{ stimulus_target('search', 'row') }}>
+                                    <td>{{ flight.destination }}</td>
+                                    <td>{{ flight.day }}</td>
+                                    <td>{{ flight.departure }}</td>
+                                    <td>{{ flight.arrival }}</td>
+                                    <td>{{ flight.operator }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">No departures scheduled.</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <div class="text-center fw-bold">{{ 'arrivals'|trans|title }}</div>
+                        <table class="table table-striped mb-4">
+                            <thead class="sticky-top">
+                            <tr>
+                                <th>Origin</th>
+                                <th>Day</th>
+                                <th>Departs</th>
+                                <th>Arrives</th>
+                                <th>Operator</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for flight in flights.arrivals %}
+                                <tr {{ stimulus_target('search', 'row') }}>
+                                    <td>{{ flight.origin }}</td>
+                                    <td>{{ flight.day }}</td>
+                                    <td>{{ flight.departure }}</td>
+                                    <td>{{ flight.arrival }}</td>
+                                    <td>{{ flight.operator }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">No arrivals scheduled.</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {# Ferries Tab Pane #}
+                    <div
+                            class="tab-pane fade"
+                            id="ferries"
+                            role="tabpanel"
+                            aria-labelledby="ferries-tab"
+                            tabindex="0"
+                    >
+                        <div class="text-center fw-bold">{{ 'departures'|trans|title }}</div>
+                        <table class="table table-striped mb-4">
+                            <thead class="sticky-top">
+                            <tr>
+                                <th>Destination</th>
+                                <th>Day</th>
+                                <th>Departs</th>
+                                <th>Arrives</th>
+                                <th>Operator</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for ferry in ferry.departures %}
+                                <tr {{ stimulus_target('search', 'row') }}>
+                                    <td>{{ ferry.destination }}</td>
+                                    <td>{{ ferry.day }}</td>
+                                    <td>{{ ferry.departure }}</td>
+                                    <td>{{ ferry.arrival }}</td>
+                                    <td>{{ ferry.operator }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">No ferry departures scheduled.</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <div class="text-center fw-bold">{{ 'arrivals'|trans|title }}</div>
+                        <table class="table table-striped mb-4">
+                            <thead class="sticky-top">
+                            <tr>
+                                <th>Origin</th>
+                                <th>Destination</th>
+                                <th>Day</th>
+                                <th>Departs</th>
+                                <th>Arrives</th>
+                                <th>Operator</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for ferry in ferry.arrivals %}
+                                <tr {{ stimulus_target('search', 'row') }}>
+                                    <td>{{ ferry.origin }}</td>
+                                    <td>{{ ferry.spcificDestination }}</td>
+                                    <td>{{ ferry.day }}</td>
+                                    <td>{{ ferry.departure }}</td>
+                                    <td>{{ ferry.arrival }}</td>
+                                    <td>{{ ferry.operator }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">No ferry arrivals scheduled.</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {# Other travel items #}
+                <div class="row g-4 mt-5">
+                    {% for item in items %}
+                        <div class="col-12 col-md-6">
+                            <div class="card">
+                                {% if item.image %}
+                                    <img src="{{ item.image }}" class="card-img-top"
+                                         style="height:200px;object-fit:cover">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h4>{{ item.title }}</h4>
+                                    <a href="{{ path(item.route._route, item.route._route_params) }}"
+                                       class="btn btn-primary">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p>No {{ category.title|lower }} found.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

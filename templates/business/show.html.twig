@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ business.title }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row g-3 justify-content-center">
+            <div class="col-12 col-md-4">
+                <div class="retro-floral-bold fs-1 mb-3">{{ business.title|title }}</div>
+                <div>+30 873 837 832</div>
+                <div>www.{{ business.slug }}.com</div>
+                <div>lakki, leros</div>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="row justify-content-center g-3">
+                    {% for image in business.images %}
+                        <img class="col-6 img-fluid object-fit-cover"
+                             style="height: 300px"
+                             src="{{ asset('uploads/business_images/' ~ image.filename) }}"
+                             alt="{{ image.caption|default('image') }}">
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

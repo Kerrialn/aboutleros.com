@@ -1,38 +1,280 @@
 @import "_variables.scss";
 @import "~bootstrap/scss/bootstrap.scss";
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 @import "~@mdi/font";
 
-
-.cinzel-decorative-regular {
-  font-family: "Cinzel Decorative", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.cinzel-decorative-bold {
-  font-family: "Cinzel Decorative", serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.cinzel-decorative-black {
-  font-family: "Cinzel Decorative", serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-
-* {
-  font-family: "Nunito Sans", sans-serif;
-  font-optical-sizing: auto;
+@font-face {
+  font-family: 'Manbow';
+  src: url('../../public/fonts/manbow/manbow-clear.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
-  font-variation-settings: "wdth" 100,
-  "YTLC" 500;
+}
+
+@font-face {
+  font-family: 'manbow-fill';
+  src: url('../../public/fonts/manbow/manbow-solid.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Retro Floral';
+  src: url('../../public/fonts/retro-floral/RetroFloral.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hairline - 100 */
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-100-Hairline.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-100-HairlineItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Thin - 200 */
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-200-Thin.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-200-ThinItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Light - 300 */
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-300-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-300-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Book - 400 (normal) */
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-400-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-400-BookItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Medium - 500 */
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-500-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-500-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Semi - 600 */
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-600-Semi.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-600-SemiItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Bold - 700 */
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-700-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-700-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Heavy - 800 */
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-800-Heavy.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-800-HeavyItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Black - 900 */
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-900-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../../public/fonts/jost/Jost-900-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+.retro-floral-bold {
+  font-family: 'Retro Floral', sans-serif;
+  font-weight: bolder;
+}
+
+.manbow-bold {
+  font-family: 'Manbow', sans-serif;
+  font-weight: bolder;
+}
+
+.manbow-fill {
+  font-family: 'manbow-fill', sans-serif;
+  font-weight: bolder;
+}
+
+.jost-bold {
+  font-family: 'Jost', sans-serif;
+  font-weight: bolder;
+}
+
+* {
+  font-family: 'Jost', sans-serif;
+}
+
+
+.text-shadow-sm {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
+}
+
+
+@mixin repeating-mask($mask-url, $tile-size: auto) {
+  mask-image: url(#{$mask-url});
+  mask-repeat: repeat;
+  mask-size: $tile-size;
+  mask-mode: alpha;
+  mask-composite: destination-in;
+  -webkit-mask-image: url(#{$mask-url});
+  -webkit-mask-repeat: repeat;
+  -webkit-mask-size: $tile-size;
+  -webkit-mask-mode: alpha;
+  -webkit-mask-composite: source-in;
+}
+
+.retro-img-pattern {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-position: center center;
+  @include repeating-mask('../../public/images/pattern-10.png', 100px 100px);
+}
+
+
+.img-with-text-overlay {
+  filter: grayscale(-30%) !important;
 }
 
 .vintage-img {
   filter: saturate(100%) contrast(70%) hue-rotate(-10deg);
+}
+
+.business-card {
+  color: #FFFFFF;
+}
+
+.hover-shadow:hover {
+  transition: all 0.3s ease-in-out;
+  color: #000000 !important;
+}
+
+.category-title {
+  color: $white;
+}
+
+.category-card:hover {
+  background-color: $gray-100 !important;
+}
+
+.category-card:hover .category-title {
+  color: $secondary !important;
+}
+
+.category-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card .card-img-overlay {
+  background: linear-gradient(
+                  to top,
+                  rgba(0, 0, 0, 0.70) 0%,
+                  rgba(0, 0, 0, 0.25) 30%,
+                  rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.category-card .card-img-overlay .category-title {
+  position: relative;
+  z-index: 1;
+  color: #fff;
 }

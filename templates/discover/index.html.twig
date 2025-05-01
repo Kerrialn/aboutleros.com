@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About Leros{% endblock %}
+
+{% block body %}
+
+
+    <div class="container">
+        <div class="row justify-content-center my-3">
+            <div class="col-12 col-md-9">
+
+
+                <div class="row g-3 justify-content-center">
+
+
+                    {% for category in categories %}
+                        <div class="col-12 col-md-4">
+                            <div class="card category-card">
+                                <img src="{{ asset(category.image) }}"
+                                     class="vintage-img card-img category-img object-fit-cover"
+                                     style="height:250px;">
+                                <div class="card-img-overlay d-flex justify-content-start align-items-end">
+                                    <div class="retro-floral-bold category-title">{{ category.title|trans }}</div>
+                                </div>
+                                <a class="stretched-link"
+                                   href="{{ path('discover_item',{category:category.slug}) }}"></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
