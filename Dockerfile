@@ -23,11 +23,11 @@ COPY --from=composer /app .
 
 # Install npm packages
 COPY package.json yarn.lock webpack.config.js ./
+COPY ./public/fonts ./public/fonts
 RUN yarn install
 
 # Production yarn build
 COPY ./assets ./assets
-COPY ./public/fonts ./public/fonts
 
 RUN yarn run build
 
