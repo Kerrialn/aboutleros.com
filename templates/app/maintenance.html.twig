@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}About Leros{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+
+        {% if app.environment == 'prod' %}
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-7PY685FXE7"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('js', new Date());
+
+                gtag('config', 'G-7PY685FXE7');
+            </script>
+        {% endif %}
+
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
+    <!-- Primary Meta Tags -->
+    <title>About Leros – Ultimate Guide to the Greek Island of Leros</title>
+    <meta name="description"
+          content="Discover Leros: curated events, cafés & bars, restaurants, marinas, transport & travel services, plus insider local tips and live schedules on AboutLeros.com."/>
+    <meta name="keywords"
+          content="Leros travel, Leros events, Leros restaurants, Leros cafés, Leros marinas, Leros ferry schedule, Leros flight schedule, Leros Greece tourism"/>
+    <meta name="author" content="AboutLeros.com"/>
+    <meta name="robots" content="index,follow"/>
+    <link rel="canonical" href="https://aboutleros.com/"/>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://aboutleros.com/"/>
+    <meta property="og:title" content="About Leros – Your Ultimate Guide to Greece’s Hidden Gem"/>
+    <meta property="og:description"
+          content="Plan your perfect Leros getaway with curated events, top restaurants, marinas, live transport schedules & insider tips."/>
+    <meta property="og:image" content="https://aboutleros.com/images/og-image.jpg"/>
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="@aboutleros"/>
+    <meta name="twitter:title" content="About Leros – Your Ultimate Guide to Greece’s Hidden Gem"/>
+    <meta name="twitter:description"
+          content="Plan your perfect Leros getaway with curated events, top restaurants, marinas, live transport schedules & insider tips."/>
+    <meta name="twitter:image" content="https://aboutleros.com/images/twitter-card.jpg"/>
+</head>
+<body>
+
+<div class="container-fluid border-bottom border-primary"
+     style="
+             border-width: 5px!important;
+             height: 35px;
+             background-image: url({{ asset('images/pattern/greek-pattern-primary.png') }});
+             background-size: 200px;
+             background-repeat: repeat;
+             "
+>
+</div>
+
+<div>
+    {% block body %}
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="fs-3 retro-floral-bold">Sorry, unavailable</div>
+                        <div>The site is currently offline due to scheduled maintenance. Please come back at a later date.</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</div>
+
+</body>
+</html>
+

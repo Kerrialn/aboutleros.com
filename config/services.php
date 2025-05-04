@@ -8,6 +8,7 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\tagged_it
 
 return static function (ContainerConfigurator $container): void {
     $parameters = $container->parameters();
+    $parameters->set('app.is_under_maintenance', '%env(APP_UNDER_MAINTENANCE)%');
     $container->import(__DIR__ . '/packages/data/*.php');
 
     $services = $container->services();
