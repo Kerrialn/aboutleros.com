@@ -5,10 +5,8 @@ namespace App\Repository;
 use App\Entity\Event;
 use Carbon\CarbonImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Order;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @extends ServiceEntityRepository<Event>
@@ -57,5 +55,4 @@ class EventRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
-
 }

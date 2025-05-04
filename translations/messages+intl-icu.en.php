@@ -1,7 +1,9 @@
 <?php
 
 return [
-    'language' => '__language',
+    'discover' => 'discover',
+    'history' => 'history',
+    'language' => 'language',
     'region-country' => '__region-country',
     'currency' => '__currency',
     'sign-up' => 'sign-up',

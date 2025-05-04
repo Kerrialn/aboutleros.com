@@ -14,11 +14,11 @@
 </head>
 <body>
 
-<div class="container-fluid border-bottom border-secondary"
+<div class="container-fluid border-bottom border-primary"
      style="
              border-width: 5px!important;
              height: 35px;
-             background-image: url({{ asset('images/pattern/greek-pattern-blue.png') }});
+             background-image: url({{ asset('images/pattern/greek-pattern-primary.png') }});
              background-size: 200px;
              background-repeat: repeat;
              "
@@ -31,10 +31,10 @@
     {% block body %}{% endblock %}
 </div>
 {% if not app.user %}
-    <div class="container-fluid py-5 border-top border-secondary"
+    <div class="container-fluid py-5 border-top border-primary"
          style="
                  border-width: 10px!important;
-                 background-image: url({{ asset('images/pattern/greek-pattern-blue.png') }});
+                 background-image: url({{ asset('images/pattern/greek-pattern-primary.png') }});
                  background-size: contain;
                  background-repeat: repeat;"
     >

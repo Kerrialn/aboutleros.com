@@ -19,7 +19,7 @@ class Business implements CategorizableInterface
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\Column(type: 'uuid', unique: true)]
     #[ORM\CustomIdGenerator(UuidGenerator::class)]
-    private Uuid|null $id = null;
+    private Uuid $id;
 
     #[ORM\Column(length: 255)]
     private string $title;
@@ -35,7 +35,7 @@ class Business implements CategorizableInterface
     private Category|null $category = null;
 
     /**
-     * @var Collection<int, HistoricalEventImage>
+     * @var Collection<int, BusinessImage>
      */
     #[ORM\OneToMany(mappedBy: 'business', targetEntity: BusinessImage::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $images;
@@ -45,7 +45,7 @@ class Business implements CategorizableInterface
         $this->images = new ArrayCollection();
     }
 
-    public function getId(): ?Uuid
+    public function getId(): Uuid
     {
         return $this->id;
     }

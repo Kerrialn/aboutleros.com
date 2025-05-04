@@ -16,8 +16,6 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 final readonly class TravelCategoryHandler implements CategoryHandlerInterface
 {
     /**
-     * @param EventRepository $eventRepository
-     * @param UrlGeneratorInterface $urlGenerator
      * @param array<mixed>  $flightSchedule
      * @param array<mixed> $ferrySchedule
      */

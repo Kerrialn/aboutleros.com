@@ -14,13 +14,11 @@ use Symfony\Component\Uid\Uuid;
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
-    public $categories;
-
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\Column(type: 'uuid', unique: true)]
     #[ORM\CustomIdGenerator(UuidGenerator::class)]
-    private Uuid|null $id = null;
+    private Uuid $id;
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
@@ -43,6 +41,9 @@ class Category
     #[ORM\Column(type: Types::INTEGER, length: 2)]
     private null|int $displayOrder = null;
 
+    /**
+     * @var Collection<int, Business>
+     */
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Business::class)]
     private Collection $businesses;
 
@@ -71,7 +72,7 @@ class Category
         $this->businesses = new ArrayCollection();
     }
 
-    public function getId(): null|Uuid
+    public function getId(): Uuid
     {
         return $this->id;
     }
@@ -129,10 +130,12 @@ class Category
 
     public function removeBusiness(Business $business): void
     {
-        if ($this->categories->contains($business)) {
-            $this->categories->remove($business);
+        if($this->businesses->contains($business)){
+            $this->businesses->removeElement($business);
+
         }
     }
+
 
     public function getSlug(): ?string
     {

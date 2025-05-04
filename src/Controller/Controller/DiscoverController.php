@@ -5,17 +5,19 @@ namespace App\Controller\Controller;
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use App\Service\CategoryHandler\Contract\CategoryHandlerInterface;
-use ECSPrefix202306\Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DiscoverController extends AbstractController
 {
+    /**
+     * @param  CategoryHandlerInterface[] $handlers
+     */
     public function __construct(
         private CategoryRepository $categoryRepository,
-        #[TaggedIterator('app.category_handler')]
-        /** @var CategoryHandlerInterface[] */
+        #[AutowireIterator('app.category_handler')]
         private iterable $handlers
     )
     {

@@ -26,10 +26,10 @@ class Event implements CategorizableInterface
     private null|string $description;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    private null|CarbonImmutable $startAt;
+    private CarbonImmutable $startAt;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
-    private null|CarbonImmutable $endAt;
+    private null|CarbonImmutable $endAt = null;
 
     public function getId(): Uuid
     {

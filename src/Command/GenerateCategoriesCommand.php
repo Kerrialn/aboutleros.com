@@ -70,7 +70,7 @@ class GenerateCategoriesCommand extends Command
     }
 
     /**
-     * @return array<string, array{title:string,slug:string,image:string,contentType:ContentTypeEnum}>
+     * @return array<string, array{title:string,description:string,slug:string,image:string,order:int,contentType:ContentTypeEnum}>
      */
     private function getCategories(): array
     {

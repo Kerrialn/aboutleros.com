@@ -1,24 +1,83 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <a class="navbar-brand mb-0 pb-0" href="{{ path('discover') }}">
-                <span class="fs-1 mb-0 pb-0 manbow-bold">About Leros</span>
+<nav class="navbar bg-transparent mb-0">
+    <div class="container">
+        <a class="navbar-brand mb-0 pb-0" href="{{ path('discover') }}">
+            <span class="display-1 mb-0 pb-0 manbow-bold d-block d-md-none">AB</span>
+            <span class="fs-1 mb-0 pb-0 manbow-bold d-none d-md-block">About Leros</span>
+        </a>
+        <div class="d-flex gap-4 align-items-center">
+            <a class="fs-4 btn btn-outline-primary lh-1 border-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#language"
+               aria-controls="language" aria-label="language">
+                <span class="d-block d-md-none">
+                    {{ app.locale|upper }}
+                </span>
+                <span class="d-none d-md-block">
+                    {{ app.locale|language_name }}
+                </span>
+            </a>
+            <a class="link-p" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu" aria-controls="menu"
+               aria-label="menu">
+                <i class="mdi mdi-menu fs-1"></i>
             </a>
         </div>
-        <ul class="nav mt-1">
+    </div>
+</nav>
+
+<div class="container d-none d-lg-block">
+    <div class="row">
+        <div class="nav">
+            <a class="nav-item nav-link {{ app.request.attributes.get('_route') == 'discover' ? 'text-black' : '' }}"
+               href="{{ path('discover') }}">{{ 'discover'|trans|title }}</a>
+            <a class="nav-item nav-link {{ app.request.attributes.get('_route') == 'history' ? 'text-black' : '' }}"
+               aria-current="page" href="{{ path('history') }}">{{ 'history'|trans()|title }}</a>
+            <a class="nav-item ms-auto nav-link {{ app.request.attributes.get('_route') == 'leros_visitor_survey' ? 'text-black' : '' }}"
+               aria-current="page"
+               href="{{ path('leros_visitor_survey') }}">{{ 'visitor-survey'|trans()|title }}</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="menu" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header flex-column">
+        <button type="button" class="btn-close my-1" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div id="offcanvasNavbarLabel">
+            <div class="fs-3 pb-0 manbow-fill">About Leros</div>
+        </div>
+    </div>
+    <div class="offcanvas-body">
+        <div class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <a class="nav-item nav-link active" aria-current="page"
+               href="{{ path('discover') }}">{{ 'discover'|trans|title }}</a>
+            <a class="nav-item nav-link active" aria-current="page"
+               href="{{ path('history') }}">{{ 'history'|trans|title }}</a>
+            <a class="nav-item nav-link active" aria-current="page"
+               href="{{ path('leros_visitor_survey') }}">{{ 'visitor-survey'|trans|title }}</a>
+        </div>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="language" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header flex-column">
+        <button type="button" class="btn-close my-1" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="retro-floral-bold fs-3">{{ 'language'|trans|title }}</div>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
             <li class="nav-item">
-                <a class="nav-link {{ app.request.attributes.get('_route') == 'discover' ? 'text-black' : '' }}"
-                   href="{{ path('discover') }}">{{ 'discover'|trans|title }}</a>
+                <a class="nav-link active" aria-current="page" href="{{ path('discover', { '_locale' : 'en' }) }}">{{ 'en'|language_name|title }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ app.request.attributes.get('_route') == 'history' ? 'text-black' : '' }}"
-                   aria-current="page" href="{{ path('history') }}">{{ 'history'|trans()|title }}</a>
+                <a class="nav-link" href="{{ path('discover', { '_locale' : 'el' }) }}">{{ 'el'|language_name|title }}</a>
             </li>
-            <li class="nav-item ms-auto">
-                <a class="nav-link {{ app.request.attributes.get('_route') == 'leros_visitor_survey' ? 'text-black' : '' }}"
-                   aria-current="page" href="{{ path('leros_visitor_survey') }}">{{ 'visitor-survey'|trans()|title }}</a>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('discover', { '_locale' : 'it' }) }}">{{ 'it'|language_name|title }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('discover', { '_locale' : 'fr' }) }}">{{ 'fr'|language_name|title }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('discover', { '_locale' : 'de' }) }}">{{ 'de'|language_name|title }}</a>
             </li>
         </ul>
     </div>
-
 </div>

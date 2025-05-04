@@ -3,12 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Category;
-use App\Model\Item;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Order;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @extends ServiceEntityRepository<Category>
@@ -50,5 +47,4 @@ class CategoryRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
-
 }

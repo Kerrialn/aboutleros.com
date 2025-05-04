@@ -103,7 +103,7 @@ class HistoricalEvent
 
     public function addImage(HistoricalEventImage $image): self
     {
-        if (!$this->images->contains($image)) {
+        if (! $this->images->contains($image)) {
             $this->images->add($image);
             $image->setHistoricalEvent($this);
         }

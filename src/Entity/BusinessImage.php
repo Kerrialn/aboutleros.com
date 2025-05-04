@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\TypeResolver;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Uid\Uuid;
@@ -16,11 +17,11 @@ class BusinessImage
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\Column(type: 'uuid', unique: true)]
     #[ORM\CustomIdGenerator(UuidGenerator::class)]
-    private ?Uuid $id = null;
+    private Uuid $id;
 
     #[ORM\ManyToOne(targetEntity: Business::class, inversedBy: 'images')]
-    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    private Business $business;
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
+    private null|Business $business;
 
     #[Vich\UploadableField(mapping: 'business_images', fileNameProperty: 'filename')]
     private ?File $imageFile = null;
@@ -34,7 +35,7 @@ class BusinessImage
     #[ORM\Column(type: 'integer')]
     private int $position = 0;
 
-    public function getId(): ?Uuid
+    public function getId(): Uuid
     {
         return $this->id;
     }
@@ -82,12 +83,12 @@ class BusinessImage
         $this->imageFile = $imageFile;
     }
 
-    public function getBusiness(): Business
+    public function getBusiness(): null|Business
     {
         return $this->business;
     }
 
-    public function setBusiness(Business $business): void
+    public function setBusiness(null|Business $business): void
     {
         $this->business = $business;
     }
