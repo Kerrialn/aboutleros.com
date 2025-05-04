@@ -136,7 +136,6 @@ class Category
         }
     }
 
-
     public function getSlug(): ?string
     {
         return $this->slug;
