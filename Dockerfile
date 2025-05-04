@@ -27,6 +27,7 @@ RUN yarn install
 
 # Production yarn build
 COPY ./assets ./assets
+COPY ./public/fonts ./public/fonts
 
 RUN yarn run build
 
