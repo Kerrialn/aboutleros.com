@@ -30,7 +30,7 @@
         "@mdi/font": "^7.2.96",
         "@popperjs/core": "^2.11.7",
         "animejs": "^3.2.1",
-        "bootstrap": "^5.2.3",
+        "bootstrap": "^5.3.5",
         "countries-and-timezones": "^3.4.1"
     }
 }
